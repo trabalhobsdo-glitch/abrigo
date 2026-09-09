@@ -89,24 +89,16 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   text-decoration:none;
 }
 .brand img{
-  height: 44px;
-  width: 44px;
+  height: 56px;
+  width: 56px;
   object-fit: contain;
 }
 .brand-name{
   font-family: var(--serif);
   font-weight: 600;
-  font-size: 1.02rem;
+  font-size: 1.15rem;
   color: var(--navy-deep);
   letter-spacing: .01em;
-}
-.brand-name small{
-  display:block;
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: .68rem;
-  color: var(--ink-soft);
-  letter-spacing: .04em;
 }
 .btn{
   display:inline-flex;
