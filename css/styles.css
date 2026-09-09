@@ -131,6 +131,26 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 .btn-ghost:hover{ background: var(--navy); color:#fff; }
 .header-cta{ padding: 9px 16px; font-size: .85rem; }
 
+@media (max-width: 480px){
+  .site-header .container{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    gap: 10px;
+  }
+  .brand img{
+    height: 34px;
+    width: 34px;
+  }
+  .brand-name{
+    font-size: .82rem;
+    line-height: 1.15;
+  }
+  .header-cta{
+    padding: 7px 12px;
+    font-size: .78rem;
+  }
+}
+
 /* ============================================================
    Hero
    ============================================================ */
@@ -297,6 +317,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 @media (max-width: 860px){
   .spotlight-inner{ grid-template-columns: 1fr; }
   .spotlight-copy{ text-align:center; }
+  .spotlight-copy h2{ margin-left:auto; margin-right:auto; }
   .spotlight-copy p{ margin-left:auto; margin-right:auto; }
 }
 
