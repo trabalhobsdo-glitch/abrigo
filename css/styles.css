@@ -12,12 +12,12 @@
   --ink: #262420;
   --ink-soft: #55524a;
   --line: #e7e1d2;
-  --green: #2f7a4d;
-  --green-deep: #235d3a;
-  --green-soft: #eaf4ee;
+  --green: #1fb454;
+  --green-deep: #158a41;
+  --green-soft: #e6f8ec;
 
-  --serif: "Fraunces", "Iowan Old Style", "Palatino Linotype", serif;
-  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 
   --radius-s: 8px;
   --radius-m: 14px;
