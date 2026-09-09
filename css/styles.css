@@ -415,6 +415,27 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   display:block;
   margin-bottom: 6px;
 }
+.icon-card{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+.icon-card svg{
+  width: 30px;
+  height: 30px;
+  color: var(--gold);
+}
+.icon-inline{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.icon-inline svg{
+  width: 16px;
+  height: 16px;
+  color: var(--ink-soft);
+}
 .t-card h3{ font-size: 1.02rem; margin-bottom: .4em; }
 .t-card p{ font-size: .9rem; margin: 0; }
 
