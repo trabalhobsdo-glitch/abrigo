@@ -61,6 +61,31 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ------------------------------------------------------------
+  // Carrossel "antes e depois" (spotlight)
+  // ------------------------------------------------------------
+  const spotlight = document.getElementById("spotlight-carousel");
+  if (spotlight) {
+    const slides = spotlight.querySelectorAll(".spotlight-slide");
+    const dots = spotlight.querySelectorAll(".spotlight-dot");
+    const prevBtn = document.getElementById("spotlight-prev");
+    const nextBtn = document.getElementById("spotlight-next");
+    let current = 0;
+
+    function showSlide(index) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach((s, i) => s.classList.toggle("is-active", i === current));
+      dots.forEach((d, i) => d.classList.toggle("is-active", i === current));
+    }
+
+    prevBtn.addEventListener("click", () => showSlide(current - 1));
+    nextBtn.addEventListener("click", () => showSlide(current + 1));
+    dots.forEach((dot, i) => dot.addEventListener("click", () => showSlide(i)));
+
+    // Alterna automaticamente a cada 4s entre antes/depois
+    setInterval(() => showSlide(current + 1), 4000);
+  }
+
+  // ------------------------------------------------------------
   // Carrossel de fotos
   // ------------------------------------------------------------
   const track = document.getElementById("carousel-track");
