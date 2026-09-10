@@ -416,6 +416,28 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   width: 100%;
   background: transparent;
 }
+.donor-email-field{
+  display:flex;
+  flex-direction:column;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.donor-email-field span{ font-size: .85rem; font-weight:600; color: var(--navy-deep); }
+.donor-email-field input{
+  border: 1.5px solid #cfe3d6;
+  border-radius: var(--radius-m);
+  padding: 12px 14px;
+  font-family: var(--sans);
+  font-size: .95rem;
+  color: var(--navy-deep);
+  outline:none;
+}
+.donor-email-field input:focus{ border-color: var(--green); }
+.donor-email-hint{
+  font-size: .76rem;
+  color: var(--ink-soft);
+  margin: 4px 0 18px;
+}
 .donate-cta{
   width: 100%;
   padding: 15px;
@@ -494,6 +516,36 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   color: #7c8494;
   margin: 0;
 }
+.qr-image{
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  border-radius: var(--radius-s);
+  background: #fff;
+}
+.pix-copy{
+  display:flex;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+.pix-copy input{
+  flex:1;
+  border: 1.5px solid #cfe3d6;
+  border-radius: var(--radius-s);
+  padding: 10px 12px;
+  font-family: var(--sans);
+  font-size: .78rem;
+  color: var(--navy-deep);
+  background: #f6f8fb;
+  min-width: 0;
+}
+.pay-status{
+  font-size: .85rem;
+  margin: 0;
+  color: var(--ink-soft);
+}
+.pay-status.is-success{ color: var(--green-deep); font-weight:700; }
+.pay-status.is-error{ color: #b33a3a; font-weight:700; }
 .pay-methods{
   display:flex;
   justify-content:center;
