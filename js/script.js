@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const paySection = document.getElementById("pagamento");
   const payAmountEl = document.getElementById("pay-amount-value");
   const payBackBtn = document.getElementById("pay-back");
-  const donorEmailInput = document.getElementById("donor-email");
 
   const qrLoadingEl = document.getElementById("pay-qr-loading");
   const qrImageEl = document.getElementById("pay-qr-image");
@@ -60,14 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const email = donorEmailInput ? donorEmailInput.value.trim() : "";
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        alert("Digite um e-mail válido para receber a confirmação da doação. 🙂");
-        donorEmailInput?.focus();
-        return;
-      }
-
-      iniciarPagamento(selectedAmount, email);
+      iniciarPagamento(selectedAmount);
     });
   }
 
@@ -141,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------------------------------------------------
   // Integração real com o Mercado Pago (Pix)
   // ------------------------------------------------------------
-  async function iniciarPagamento(valor, email) {
+  async function iniciarPagamento(valor) {
     if (payAmountEl) payAmountEl.textContent = formatarValor(valor);
 
     // Reseta a tela de pagamento para o estado "carregando"
@@ -160,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const resposta = await fetch("/api/create-pix-payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ valor, email }),
+        body: JSON.stringify({ valor }),
       });
       const dados = await resposta.json();
 
