@@ -13,8 +13,7 @@
 
 const crypto = require("crypto");
 
-const MIN_VALOR = 5;
-const MAX_VALOR = 20000;
+const MIN_VALOR = 0.10;
 
 // O Mercado Pago exige um e-mail de pagador para criar a cobrança Pix,
 // mas isso não precisa vir do doador. Usamos um e-mail fixo do abrigo.
@@ -38,8 +37,8 @@ module.exports = async (req, res) => {
   const valor = Number(body.valor);
   const nome = typeof body.nome === "string" ? body.nome.trim() : "Doador";
 
-  if (!Number.isFinite(valor) || valor < MIN_VALOR || valor > MAX_VALOR) {
-    return res.status(400).json({ erro: `Valor inválido. Escolha um valor entre R$ ${MIN_VALOR} e R$ ${MAX_VALOR}.` });
+  if (!Number.isFinite(valor) || valor < MIN_VALOR) {
+    return res.status(400).json({ erro: `Valor inválido. O valor mínimo da doação é R$ ${MIN_VALOR.toFixed(2)}.` });
   }
 
   const transactionAmount = Math.round(valor * 100) / 100;
