@@ -16,6 +16,12 @@ const crypto = require("crypto");
 const MIN_VALOR = 5;
 const MAX_VALOR = 20000;
 
+// O Mercado Pago exige um e-mail de pagador para criar a cobrança Pix,
+// mas isso não precisa vir do doador. Usamos um e-mail fixo do abrigo.
+// Troque pelo e-mail que preferir (não precisa ser uma caixa de entrada
+// monitorada — é só um requisito técnico da API).
+const PAYER_EMAIL_PADRAO = "doacoes@abrigonossasenhoraaparecida.org";
+
 module.exports = async (req, res) => {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -30,16 +36,10 @@ module.exports = async (req, res) => {
 
   const body = req.body || {};
   const valor = Number(body.valor);
-  const email = typeof body.email === "string" ? body.email.trim() : "";
   const nome = typeof body.nome === "string" ? body.nome.trim() : "Doador";
 
   if (!Number.isFinite(valor) || valor < MIN_VALOR || valor > MAX_VALOR) {
     return res.status(400).json({ erro: `Valor inválido. Escolha um valor entre R$ ${MIN_VALOR} e R$ ${MAX_VALOR}.` });
-  }
-
-  const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  if (!emailValido) {
-    return res.status(400).json({ erro: "Informe um e-mail válido para receber a confirmação da doação." });
   }
 
   const transactionAmount = Math.round(valor * 100) / 100;
@@ -57,7 +57,7 @@ module.exports = async (req, res) => {
         description: "Doação — Abrigo Nossa Senhora Aparecida",
         payment_method_id: "pix",
         payer: {
-          email,
+          email: PAYER_EMAIL_PADRAO,
           first_name: nome,
         },
       }),
