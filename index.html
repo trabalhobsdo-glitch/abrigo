@@ -99,6 +99,12 @@
           <input type="text" inputmode="decimal" id="custom-amount" placeholder="Outro valor" />
         </label>
 
+        <label class="donor-email-field">
+          <span>Seu e-mail</span>
+          <input type="email" id="donor-email" placeholder="seuemail@exemplo.com" required />
+        </label>
+        <p class="donor-email-hint">Usamos só para enviar a confirmação da doação. Não compartilhamos com ninguém.</p>
+
         <button type="submit" class="btn btn-primary donate-cta">Doar agora</button>
 
         <div class="donate-note">
@@ -166,7 +172,7 @@
     </div>
   </section>
 
-  <!-- ETAPA 2: TELA DE PAGAMENTO (placeholder até plugar Mercado Pago / Stripe) -->
+  <!-- ETAPA 2: TELA DE PAGAMENTO (Pix via Mercado Pago) -->
   <section class="pay-screen" id="pagamento">
     <div class="container">
       <div class="pay-card">
@@ -174,18 +180,22 @@
         <div class="pay-amount" id="pay-amount-value">R$ 0</div>
         <p class="pay-sub">Escaneie o QR Code ou use o Pix copia-e-cola para finalizar sua doação.</p>
 
-        <div class="pay-placeholder">
-          <div class="qr-box">QR Code Pix<br />será exibido aqui</div>
-          <p>Em breve: pagamento processado via Mercado Pago / Stripe.</p>
+        <div class="pay-placeholder" id="pay-qr-wrapper">
+          <div class="qr-box" id="pay-qr-loading">Gerando QR Code Pix…</div>
+          <img id="pay-qr-image" class="qr-image" alt="QR Code Pix" hidden />
+        </div>
+
+        <div class="pix-copy" id="pix-copy-wrapper" hidden>
+          <input type="text" id="pix-code" readonly aria-label="Código Pix copia e cola" />
+          <button type="button" id="pix-copy-btn" class="btn btn-ghost">Copiar código</button>
         </div>
 
         <div class="pay-methods">
           <span>Pix</span>
           <span>Mercado Pago</span>
-          <span>Stripe</span>
         </div>
 
-        <p class="pay-sub" style="margin-bottom:0;">Assim que o pagamento for confirmado, você recebe a confirmação automaticamente.</p>
+        <p class="pay-status" id="pay-status">Assim que o pagamento for confirmado, você recebe a confirmação automaticamente.</p>
       </div>
     </div>
   </section>
