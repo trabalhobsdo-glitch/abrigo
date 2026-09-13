@@ -489,6 +489,9 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   text-align:center;
   padding: 10px;
 }
+.pay-placeholder .qr-box[hidden]{
+  display: none;
+}
 .pay-placeholder p{
   font-size: .8rem;
   color: #7c8494;
