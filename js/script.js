@@ -167,6 +167,10 @@ document.addEventListener("DOMContentLoaded", () => {
       pixCodeInput.value = dados.qr_code;
       pixCopyWrapperEl.hidden = false;
 
+      if (typeof fbq === "function") {
+        fbq("track", "Purchase", { value: valor, currency: "BRL" });
+      }
+
       setStatus("Aguardando a confirmação do pagamento…");
       iniciarVerificacaoStatus(dados.id);
     } catch (erro) {
